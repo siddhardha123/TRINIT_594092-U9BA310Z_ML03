@@ -3,7 +3,7 @@ import logo from '../../assets/Advance-farming-V2.svg'
 import lang from '../../assets/Language-translator.svg'
 import logo2 from '../../assets/Plant-cropping-V2.svg'
 import districts from '../../assets/main/districts'
-import data from '../../assets/main/test2.json'
+import datum from '../../assets/main/test2.json'
 import states from '../../assets/main/states'
 import months from '../../assets/main/months'
 // import Header from '../shared/Header'
@@ -24,44 +24,59 @@ const Home = () => {
         }
     }, [language])
     const [selectedState, setSelectedState] = useState('')
-
+    const [final,setFinal] = useState('')
     const [district, setDistrict] = useState('')
     const [month, setMonth] = useState('')
+    const [p, setP] = useState('')
+    const [k, setK] = useState('')
+    const [n, setN] = useState('')
+    const [budget, setBudget] = useState('')
 
-    const sendData = () => {
+   
 
+    const Submit = async(e) => {
+        e.preventDefault();
+        
         let i = states.indexOf(selectedState, 0)
         let j = districts[selectedState].indexOf(district, 0)
-        // console.log(data[i][selectedState][j][month])
-        const obj = {
-            "state": selectedState,
-            "district": district,
-            "month": month,
-            "rainfall": data[i][selectedState][j][month],
-        }
-        console.log(obj)
+        const rainfall = Number(datum[i][selectedState][j][month])
+        console.log(datum[i][selectedState][j][month])
+        const response = await fetch("https://siddhardha123123-trinit-web-v1.hf.space/run/predict", {
+	method: "POST",
+	headers: { "Content-Type": "application/json" },
+	body: JSON.stringify({
+		data: [
+			selectedState,
+			district,
+			month,
+			p,
+			k,
+			n,
+			budget,
+			rainfall,
+		]
+	})
+});
+
+
+console.log(response)
+const ans = await response.json();
+setFinal(ans.data[0])
+console.log(ans.data[0])
+        // const obj = [
+        //     "state": selectedState,
+        //     "district": district,
+        //     "month": month,
+        //     "p" : p,
+        //     "K" : k,
+        //     "N" : n,
+        //     "rainfall": data[i][selectedState][j][month],
+        // }
+        // console.log(obj)
+ 
+
+        
     }
-    if (selectedState && district && month) {
-        sendData()
-    } else {
-        console.log("nenu raanu")
-    }
-
-
-    // const [p, setP] = useState('')
-    // const [k, setK] = useState('')
-    // const [c, setC] = useState('')
-
-
-    // const enqSubmit = (e) => {
-    //     e.preventDefault();
-    //     const enq = { name, mail, subject, message }
-    //     console.log(enq)
-    //     setName('')
-    //     setMail('')
-    //     setSubject('')
-    //     setMessage('')
-    // }
 
     return (
         <>
@@ -111,26 +126,26 @@ const Home = () => {
                     <div className='flex justify-evenly  mx-20 mt-5 '>
                         <div className='text-lg md:text-3xl mt-6'>
                             <p>step 1</p>
-                            <p className='leading-10'>change the page to your  <br /><span className='text-[#00ff37]'>preferred</span> language</p>
+                            <p className='md:leading-10'>change the page to your  <br /><span className='text-[#00ff37]'>preferred</span> language</p>
                         </div>
                         <div className='w-[100%] md:w-[20%]'>
                             <img src={lang} alt="" />
                         </div>
                     </div>
-                    <div className='flex justify-evenly mx-20 mt-5'>
+                    <div className='flex justify-between md:justify-evenly mx-20 mt-5'>
 
-                        <div className='w-[50%] md:w-[35%]'>
+                        <div className='w-[100%] md:w-[20%] mt-6'>
                             <img src={logo2} alt="" />
                         </div>
-                        <div>
-                        <div className='text-3xl'>
+                        <div className=''>
+                        <div className='text-lg md:text-3xl'>
                             <p>step 2</p>
-                            <p className='leading-10'>share your <span className='text-[#00ff37]'>farm </span> data with us</p>
+                            <p className='md:leading-10'>share your <span className='text-[#00ff37]'>farm </span> data with us</p>
 
                         </div>
-                        <div className='text-3xl mt-20'>
+                        <div className='md:text-3xl mt-20'>
                             <p>step 3</p>
-                            <p className='leading-10'>Use our prediction for a <br /> prosporous <span className='text-[#00ff37]'>yield </span> </p>
+                            <p className='md:leading-10'>Use our prediction for a <br /> prosporous <span className='text-[#00ff37]'>yield </span> </p>
                         </div>
                         </div>
                     </div>
@@ -140,24 +155,10 @@ const Home = () => {
                 </div>
 
             </div>
-
+         <form action="" onSubmit={Submit}>
             <div className='w-[100%] md:w-[50%] mx-auto mt-20 '>
                 <div className='rounded-xl border-black w-[100%] md:max-w-[70%]   mx-auto p-10 shadow-2xl' >
 
-                    {/* <div className='mx-auto'>
-                        <form onSubmit={enqSubmit}>
-                            <p className='text-center text-xl bold'>Prediction</p>
-                            <p className='mt-10 mx-auto'>Location</p>
-                            <input className='h-8 mx-auto bg-slate-200 rounded-sm w-[100%]' type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                            <p className='mt-5 mx-auto'>soil composition</p>
-                            <input className='h-8 mx-auto bg-slate-200 rounded-sm w-[100%]' type="text" value={mail} onChange={(e) => setMail(e.target.value)} />
-                            <p className='mt-5 mx-auto'>rainfall</p>
-                            <input className='h-8 mx-auto bg-slate-200 rounded-sm w-[100%]' type="text" value={subject} onChange={(e) => setSubject(e.target.value)} />
-                            <p className='mt-5 mx-auto'>month</p>
-                            <textarea className='h-8  bg-slate-200 rounded-sm w-[100%]' type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
-                            <button className='bg-[#00ff37] font-bold text-white p-2 px-16 mt-7  rounded-md  md:mx-36' >start prediction</button>
-                        </form>
-                    </div> */}
                     <div className='mx-auto '>
                         <p className='text-3xl text-center bold '>Prediction</p>
                         <p className='mt-10 mx-auto'>state</p>
@@ -190,21 +191,32 @@ const Home = () => {
                             ))}
 
                         </select>
-                        <p className='mt-5 mx-auto'>p</p>
-                        <input type="text" className='bg-gray-200 p-3 rounded-md md:w-[70%]' />
-                        <p className='mt-5 mx-auto'>k</p>
-                        <input type="text" className='bg-gray-200 p-3 rounded-md md:w-[70%]' />
-                        <p className='mt-5 mx-auto'>c</p>
-                        <input type="text" className='bg-gray-200 p-3 rounded-md md:w-[70%]' />
+                        <p className='mt-5 mx-auto'>P - ratio of Phosphorous content in soil</p>
+                        <input type="text" className='bg-gray-200 p-3 rounded-md md:w-[70%]'   onChange={(e)=>setP(e.target.value)}/>
+                        <p className='mt-5 mx-auto' >K - ratio of Potassium content in soil</p>
+                        <input type="text" className='bg-gray-200 p-3 rounded-md md:w-[70%]' onChange={(e)=>setK(e.target.value)}/>
+                        <p className='mt-5 mx-auto'>N - ratio of Nitrogen content in soil</p>
+                        <input type="text" className='bg-gray-200 p-3 rounded-md md:w-[70%]'  onChange={(e)=>setN(e.target.value)}/>
+                        <p className='mt-5 mx-auto'>Budget</p>
+                        <input type="text" className='bg-gray-200 p-3 rounded-md md:w-[70%]'  onChange={(e)=>setBudget(e.target.value)}/>
 
                         <button className='bg-[#00ff37] font-bold text-white p-2  mt-7  rounded-md  md:mx-36 hover:bg-white hover:text-black hover:border-black hover:border-2' >start prediction</button>
                     </div>
-
-
+                    
                 </div>
+                
+
+                
             </div>
-
-
+            {final ? <div className='p-20 mx-auto mt-10 text-center'>
+                <p className='text-4xl'>crop :{final}</p>
+                 
+              </div> : <div className='text-4xl text-center'>prediction :-  </div>
+              
+            }
+            </form>
+           
+              
         </>
     )
 }
