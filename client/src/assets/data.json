@@ -1,0 +1,25 @@
+{
+    "english" : {
+        "title" : "title",
+        "home" : "Home",
+        "userguide" : "User Guide",
+        "predictions" : "predictions",
+        "ai"    : "AI",
+        "crop"  : "Crop",
+        "predictor" : "predictor",
+        "text"       : "The purpose of this project is to show a suitable crop to grow, given the physical conditions of the farm which include Soil Nitrogen, Soil Phosphorus, Soil potassium , Rainfall, Humidity, soil pH and Temprature."
+        
+    },
+
+    "telugu" : {
+        "title" : "వ్యవసాయ అంచనాలు",
+        "home" : "హోమ్",
+        "userguide" : "వినియోగదారు గైడ్",
+        "predictions" : "అంచనాలు",
+        "ai"    : "AI",
+        "crop"  : "పంట",
+        "predictor" : "ప్రిడిక్టార్ ",
+        "text"       : "నేల నత్రజని, నేల భాస్వరం, నేల పొటాషియం, వర్షపాతం, తేమ, నేల pH మరియు ఉష్ణోగ్రత వంటి పొలం యొక్క భౌతిక పరిస్థితులను బట్టి, ఎదగడానికి తగిన పంటను చూపించడం ఈ ప్రాజెక్ట్ యొక్క ఉద్దేశ్యం."
+        
+    }
+}
