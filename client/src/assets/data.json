@@ -1,13 +1,13 @@
 {
     "english" : {
-        "title" : "title",
+        "title" : "cropred",
         "home" : "Home",
         "userguide" : "User Guide",
         "predictions" : "predictions",
         "ai"    : "AI",
         "crop"  : "Crop",
         "predictor" : "predictor",
-        "text"       : "The purpose of this project is to show a suitable crop to grow, given the physical conditions of the farm which include Soil Nitrogen, Soil Phosphorus, Soil potassium , Rainfall, Humidity, soil pH and Temprature."
+        "text"       : "The purpose of this project is to show a suitable crop to grow, given the physical conditions of the farm"
         
     },
 
