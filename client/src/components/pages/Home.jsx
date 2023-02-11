@@ -6,6 +6,7 @@ import districts from '../../assets/main/districts'
 import datum from '../../assets/main/test2.json'
 import states from '../../assets/main/states'
 import months from '../../assets/main/months'
+import coding from '../../assets/main/coding'
 // import Header from '../shared/Header'
 import translation from '../../assets/data.json'
 import { useState, useEffect } from 'react'
@@ -37,9 +38,9 @@ const Home = () => {
     const Submit = async(e) => {
         e.preventDefault();
         
-        let i = states.indexOf(selectedState, 0)
-        let j = districts[selectedState].indexOf(district, 0)
-        const rainfall = Number(datum[i][selectedState][j][month])
+        let i = states.indexOf(selectedState,0)
+        let j = districts[selectedState].indexOf(district,0)
+        const rainfall = datum[i][selectedState][j][month]
         console.log(datum[i][selectedState][j][month])
         const response = await fetch("https://siddhardha123123-trinit-web-v1.hf.space/run/predict", {
 	method: "POST",
@@ -61,7 +62,12 @@ const Home = () => {
 
 console.log(response)
 const ans = await response.json();
-setFinal(ans.data[0])
+if(coding[ans.data[0]])
+{
+    setFinal(coding[ans.data[0]])
+}else{
+    console.log("error")
+}
 console.log(ans.data[0])
         // const obj = [
         //     "state": selectedState,
