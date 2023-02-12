@@ -15,7 +15,7 @@ import { useState, useEffect } from 'react'
 const Home = () => {
     const [language, setLanguage] = useState('english')
     const [content, setContent] = useState(translation.english)
-
+    const [submitted,setSubmitted] = useState(false)
 
     useEffect(() => {
         if (language === "english") {
@@ -37,7 +37,7 @@ const Home = () => {
 
     const Submit = async(e) => {
         e.preventDefault();
-        
+        setSubmitted(true)
         let i = states.indexOf(selectedState,0)
         let j = districts[selectedState].indexOf(district,0)
         const rainfall = datum[i][selectedState][j][month]
@@ -65,6 +65,7 @@ const ans = await response.json();
 if(coding[ans.data[0]])
 {
     setFinal(coding[ans.data[0]])
+    setSubmitted(false)
 }else{
     console.log("error")
 }
@@ -89,18 +90,18 @@ console.log(ans.data[0])
             {/* header */}
             <div className=' flex justify-between px-20 bg-gray-100' >
 
-                <p className='p-10 font-semibold text-xl'>{content.title}</p>
+                <p className='p-10 font-semibold text-3xl'>{content.title}</p>
 
 
                 <ul className="hidden md:flex gap-24 p-3 py-6 mx-10 mt-5 text-black  ">
 
-                    <li className="mx-auto hover:bg-[#00ff37] hover:rounded-lg text-lg hover:font-semibold px-3 py-1">
+                    <li className="mx-auto hover:bg-[#00ff37] hover:rounded-lg text-xl hover:font-semibold px-3 py-1">
                         <a href="/">{content.home}</a>
                     </li>
-                    <li className="mx-auto hover:bg-[#00ff37] hover:rounded-lg text-lg hover:font-semibold px-3 py-1">
+                    <li className="mx-auto hover:bg-[#00ff37] hover:rounded-lg text-xl hover:font-semibold px-3 py-1">
                         <a href="/">{content.userguide}</a>
                     </li>
-                    <li className="mx-auto hover:bg-[#00ff37] hover:rounded-lg text-lg hover:font-semibold px-3 py-1">
+                    <li className="mx-auto hover:bg-[#00ff37] hover:rounded-lg text-xl hover:font-semibold px-3 py-1">
                         <a href="/">{content.predictions}</a>
                     </li>
                 </ul>
@@ -119,20 +120,20 @@ console.log(ans.data[0])
             < div className=''>
                 <div className='flex justify-around px-2 md:px-20' >
                     <div className='text-3xl md:text-8xl tracking-tight mt-20'>
-                        <p className='mx-auto'>AI <br /><span className='text-[#00ff37]'>{content.crop}</span>{content.predictor}</p>
+                        <p className='mx-auto'><span className='text-[#00ff37]'> AI </span>based<br /><span className='text-[#00ff37]'>{content.crop} </span>{content.predictor}</p>
                     </div>
                     {/* logo */}
                     <div className='w-[50%] md:w-[30%]'>
                         <img src={logo} alt="" />
                     </div>
                 </div>
-                <p className='text-justify px-5 md:px-44 text-lg mt-10'>{content.text}</p>
+                <p className='text-justify px-5 md:px-44 text-2xl mt-10'>{content.text}</p>
                 <div className='mt-40'>
                     <p className='text-3xl text-center mt-10'>{content.userguide}</p>
                     <div className='flex justify-evenly  mx-20 mt-5 '>
                         <div className='text-lg md:text-3xl mt-6'>
-                            <p>step 1</p>
-                            <p className='md:leading-10'>change the page to your  <br /><span className='text-[#00ff37]'>preferred</span> language</p>
+                            <p>Step-1:</p>
+                            <p className='md:leading-10'>Change the page to your  <br /><span className='text-[#00ff37]'>preferred</span> language.</p>
                         </div>
                         <div className='w-[100%] md:w-[20%]'>
                             <img src={lang} alt="" />
@@ -145,13 +146,13 @@ console.log(ans.data[0])
                         </div>
                         <div className=''>
                         <div className='text-lg md:text-3xl'>
-                            <p>step 2</p>
-                            <p className='md:leading-10'>share your <span className='text-[#00ff37]'>farm </span> data with us</p>
+                            <p>Step-2:</p>
+                            <p className='md:leading-10'>Share your <span className='text-[#00ff37]'>farm </span> data with us.</p>
 
                         </div>
                         <div className='md:text-3xl mt-20'>
-                            <p>step 3</p>
-                            <p className='md:leading-10'>Use our prediction for a <br /> prosporous <span className='text-[#00ff37]'>yield </span> </p>
+                            <p>Step-3:</p>
+                            <p className='md:leading-10'>Use our prediction for a <br /> prosporous <span className='text-[#00ff37]'>yield.</span> </p>
                         </div>
                         </div>
                     </div>
@@ -162,10 +163,12 @@ console.log(ans.data[0])
 
             </div>
          <form action="" onSubmit={Submit}>
-            <div className='w-[100%] md:w-[50%] mx-auto mt-20 '>
-                <div className='rounded-xl border-black w-[100%] md:max-w-[70%]   mx-auto p-10 shadow-2xl' >
+            <div className='w-[100%] md:w-[60%]   justify-around mt-20 md:flex '>
 
-                    <div className='mx-auto '>
+
+                <div className='rounded-xl border-black w-[100%] md:max-w-[70%] mx-auto p-10 shadow-2xl md:ml-[60%]' >
+
+                    <div className='mx-auto p-10'>
                         <p className='text-3xl text-center bold '>Prediction</p>
                         <p className='mt-10 mx-auto'>state</p>
                         <select name="" id="" className='p-3 rounded-md md:w-[70%] text-sm md:text-lg' onChange={(e) => setSelectedState(e.target.value)}>
@@ -209,18 +212,34 @@ console.log(ans.data[0])
                         <button className='bg-[#00ff37] font-bold text-white p-2  mt-7  rounded-md  md:mx-36 hover:bg-white hover:text-black hover:border-black hover:border-2' >start prediction</button>
                     </div>
                     
+                
+        </div>
+                <div>
+                    
                 </div>
-                
-
-                
-            </div>
-            {final ? <div className='p-20 mx-auto mt-10 text-center'>
-                <p className='text-4xl'>crop :{final}</p>
+                <p className='text-4xl mt-10 md:ml-32'>Recommended Crop: </p>
+                {final && <div className='px-5 mt-12 mx-auto  '>
+                <p className='text-[#00ff37] mt-32 text-7xl font-bold'>"{final}"</p>
                  
-              </div> : <div className='text-4xl text-center'>prediction :-  </div>
+              </div> 
+               
               
             }
+             {
+                submitted  && <div className='text-4xl text-center mt-20'>loading....</div>
+            }
+           
+                
+            </div>
+            
             </form>
+           
+           <br />
+           <br />
+           <br />
+           <br />
+           <br />
+           <br />
            
               
         </>

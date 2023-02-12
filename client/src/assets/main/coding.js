@@ -10,7 +10,7 @@ const coding = {
     "7"  : "mango" ,
     "8" : "orange",
     "9"  : "papaya",
-    "10" : "pomegranate",
+    "10" : "Pomegranate",
     "11" : "rice",
 
 }

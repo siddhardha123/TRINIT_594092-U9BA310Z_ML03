@@ -7,7 +7,7 @@
         "ai"    : "AI",
         "crop"  : "Crop",
         "predictor" : "predictor",
-        "text"       : "The purpose of this project is to show a suitable crop to grow, given the physical conditions of the farm"
+        "text"       : "Our Machine learning model predicts the optimal crop that could be grown in a particular location based on the location, month and budget."
         
     },
 

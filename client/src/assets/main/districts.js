@@ -3,17 +3,12 @@ const districts = {
   'ASSAM': ["CACHAR", "DHUBRI", "JORHAT"],
   'MANIPUR': [
     "IMPHAL EAST",
-    "SENAPATI",
-    "TAMENGLONG",
     "CHANDEL",
-    "UKHRUL",
     "THOUBAL",
     "BISHNUPUR",
     "IMPHAL WEST",
-    "CHURACHANDPUR",
+    
   ],
-
-  'TRIPURA': ["NORTH TRIPURA"],
   "WEST BENGAL": [
     "bankura",
     "burdwan",
@@ -41,7 +36,6 @@ const districts = {
   'HIMACHAL': ["KANGRA", "KULLU"],
   'RAJASTHAN': ["JALORE", "TONK"],
   "MADHYA PRADESH": ["DHAR", "JHABUA", "SHEOPUR"],
-  'GUJARAT': ["PANCHMAHALS"],
   'MAHARASHTRA': [
     "AHMEDNAGAR",
     "BULDHANA",

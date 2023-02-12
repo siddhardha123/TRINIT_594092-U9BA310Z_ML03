@@ -1,22 +1,5 @@
 [
-  {
-    "ANDAMAN And NICOBAR ISLANDS": [
-      {
-        "district": "SOUTH ANDAMAN",
-        "JAN": 43.7,
-        "FEB": 26,
-        "MAR": 18.6,
-        "APR": 90.5,
-        "MAY": 374.4,
-        "JUL": 421.3,
-        "AUG": 423.1,
-        "SEP": 455.6,
-        "OCT": 301.2,
-        "NOV": 275.8,
-        "DEC": 128.3
-      }
-    ]
-  },
+
   {
     "ASSAM": [
       {
@@ -134,24 +117,6 @@
         "OCT": 144.5,
         "NOV": 34.3,
         "DEC": 19.5
-      }
-    ]
-  },
-  {
-    "TRIPURA": [
-      {
-        "district": "NORTH TRIPURA",
-        "JAN": 13.6,
-        "FEB": 37.2,
-        "MAR": 118.4,
-        "APR": 272.8,
-        "MAY": 440.1,
-        "JUL": 402.7,
-        "AUG": 367.7,
-        "SEP": 279.8,
-        "OCT": 173.8,
-        "NOV": 45.1,
-        "DEC": 13.1
       }
     ]
   },
@@ -576,24 +541,7 @@
       }
     ]
   },
-  {
-    "GUJARAT": [
-      {
-        "district": "PANCHMAHALS",
-        "JAN": 1,
-        "FEB": 0.1,
-        "MAR": 0.7,
-        "APR": 0.3,
-        "MAY": 6,
-        "JUL": 311.5,
-        "AUG": 322.6,
-        "SEP": 163.5,
-        "OCT": 25.2,
-        "NOV": 12.1,
-        "DEC": 1.8
-      }
-    ]
-  },
+ 
  
   {
     "MAHARASHTRA": [
